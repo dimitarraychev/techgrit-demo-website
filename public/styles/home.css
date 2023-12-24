@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+main {
+    min-height: 100vh;
+}
+
+#home {
+    padding-top: 6rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    width: 90%;
+    min-height: 100vh;
+    margin: auto;
+    row-gap: 5vh;
+    padding-bottom: 5vh;
+}
+
+.home-msg {
+    grid-column: span 2;
+    width: 50%;
+    padding: 1em;
+    margin: auto;
+    text-align: center;
+}
+
+.home-msg h1 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    font-size: 36px;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+}
+
+.home-msg p {
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.home-img-container {
+    width: 45vw;
+    height: 60vh;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.home-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+.home-info {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 3vh;
+    margin: 3em;
+    padding: 2em;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.1px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+.home-info h1 {
+    letter-spacing: 1px;
+    font-size: 32px;
+}
+
+.home-info p {
+    width: 80%;
+}
+
+.home-btn {
+    height: 5.5vh;
+    width: 8vw;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto;
+    font-size: 16px;
+}
+
+.home-btn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+dialog {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1em 1em;
+    border-radius: 1em;
+}
+
+#dialogError {
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+#dialog-btns {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+}
+
+dialog button {
+    width: 7vw;
+    height: 5vh;
+    border-radius: 0.5em;
+    background-color: black;
+    color: #fff;
+}
+
+dialog button:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+#dialogConfirmBtn {
+    display: none;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em 1em 1em 1em;
+    width: 30%;
+    margin: auto;
+}
+
+footer a {
+    color: black;
+}

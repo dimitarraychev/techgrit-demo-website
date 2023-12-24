@@ -1,0 +1,96 @@
+nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    border-bottom: 2px solid black;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4vh;
+    background: white;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    background-color: white;
+}
+
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 5vh;
+}
+
+.logo-container {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    letter-spacing: -2px;
+    color: black;
+    margin-left: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container a {
+    color: black;
+}
+
+.user-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+.username {
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fa-user-astronaut {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.menu-items {
+    z-index: 2;
+    position: fixed;
+    display: none;
+    width: 7em;
+    right: 1vw;
+    top: 9vh;
+    border-radius: 5px;
+}
+
+.menu-items a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    padding: 1vh;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 2px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.menu-items a:hover {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#postsBtn {
+    color: black;
+    margin-right: 2vw;
+    font-weight: 600;
+}

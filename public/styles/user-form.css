@@ -1,0 +1,59 @@
+#login, #register {
+  padding-top: 6rem;
+}
+
+.user-form {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  gap: 40px;
+  max-width: 450px;
+  margin: auto;
+  padding: 30px 0 30px 0;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.user-form h2 {
+  font-size: 32px;
+}
+
+.user-form input {
+  display: block;
+  align-self: center;
+  width: 200px;
+  height: 2rem;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-form button {
+  position: relative;
+  width: 7vw;
+  height: 6vh;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s ease;
+  background-color: black;
+  color: #fff;
+}
+
+.user-form button:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.error-msg {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}

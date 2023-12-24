@@ -1,0 +1,84 @@
+#edit, #create {
+    padding-top: 6rem;
+}
+
+.post-form {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto;
+    place-items: center;
+    gap: 5vh;
+    width: 60%;
+    margin: auto;
+    padding: 30px 0 30px 0;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.post-form form {
+    display: grid;
+    place-items: center;
+}
+
+.post-form h2 {
+    font-size: 32px;
+}
+
+.post-form input {
+    font-size: 18px;
+    display: block;
+    align-self: center;
+    width: 30vw;
+    height: 2rem;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.post-form #title {
+    width: 30vw;
+}
+
+.post-form #category {
+    font-size: 18px;
+    width: 15vw;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.post-form textarea {
+    font-size: 18px;
+    display: block;
+    width: 50vw;
+    height: 33vh;
+    margin: auto;
+    border-radius: 5px;
+    resize: none;
+}
+
+.post-form button {
+    width: 7vw;
+    height: 6vh;
+    position: relative;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: auto;
+    transition: 0.3s ease;
+    background-color: black;
+    color: #fff;
+}
+
+.post-form button:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.error-msg {
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    padding: 1rem;
+}

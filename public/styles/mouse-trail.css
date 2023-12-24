@@ -1,0 +1,36 @@
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    display: block;
+    border-radius: 0;
+    mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+body:hover>.cursor {
+    opacity: 1;
+}
+
+.top-circle {
+    border: 2px solid white;
+    position: absolute;
+    display: block;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 2.5rem;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+
+.circle {
+    position: absolute;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: #fff;
+}
