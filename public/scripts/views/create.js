@@ -1,4 +1,4 @@
-import { writeData } from "../api/data.js";
+import { writePost } from "../api/posts.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
 
 let context;
@@ -44,48 +44,45 @@ const createTemplate = () => context.html`
 `;
 
 export function createPage(ctx) {
-    context = ctx;
+	context = ctx;
+	
+	if (!context.userID) {
+		showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
+		return context.redirect('/posts');
+	}
 
-	context.onAuthStateChanged(context.auth, (user) => {
-        if (!user) {
-            showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
-			return context.redirect('/posts#all');
-        }
-    });
-
-    context.render(createTemplate(), context.main);
+	context.render(createTemplate());
 }
 
 async function submitForm(e) {
-    e.preventDefault();
-   
+	e.preventDefault();
+
 	const formData = new FormData(e.target);
 	const title = formData.get('title').trim();
 	const category = formData.get('category');
 	const image = formData.get('image').trim();
 	const description = formData.get('description').trim();
-	const ownerID = context.auth.currentUser.uid;
-	const ownerName = context.auth.currentUser.displayName;
-	const likes = '';
-	
+	const ownerID = context.userID;
+	const ownerName = context.displayName;
+	const likes = [];
+
 	if (title == '' || image == '' ||
 		category == null || description == '') return appendErrorMessage('empty');
 	if (title.length < 5 || title.length > 100) return appendErrorMessage('title');
 	if (description.length < 50 || description.length > 3000) return appendErrorMessage('description');
 
 	showErrorModal("Mission accomplished! Are you ready to confirm your post and set the tech world abuzz? 'Affirmative!' 🤖🎉", true);
-	
+
 	const confirmBtn = document.querySelector('#dialogConfirmBtn');
 	confirmBtn.addEventListener('click', confirmSubmit);
 
 	async function confirmSubmit(ev) {
 
-		const modal = document.querySelector('dialog');
+		const postID = await writePost(title, category, image, description, ownerID, ownerName, likes);
 
-		const postID = await writeData(context, title, category, image, description, ownerID, ownerName, likes);
+		const modal = document.querySelector('dialog');
 		modal.close();
-		e.target.reset();
-		
-		context.redirect(`/posts${postID}`);
+
+		context.redirect(`/posts/${postID}`);
 	}
 }

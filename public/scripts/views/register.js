@@ -1,4 +1,4 @@
-import { register } from "../api/user.js";
+import { register } from "../api/users.js";
 import { appendErrorMessage } from "../util/errorHandler.js";
 
 let context;
@@ -46,7 +46,7 @@ const registerTemplate = () => context.html`
 
 export function registerPage(ctx) {
 	context = ctx;
-	context.render(registerTemplate(), context.main);
+	context.render(registerTemplate());
 }
 
 function submitForm(e) {
@@ -62,5 +62,6 @@ function submitForm(e) {
 	if (username.length < 3 || username.length > 20) return appendErrorMessage('length');
 	if (rePass != password) return appendErrorMessage('match');
 
-	register(e, context, username, email, password);
+	register(username, email, password);
+	context.redirect('/posts');
 }

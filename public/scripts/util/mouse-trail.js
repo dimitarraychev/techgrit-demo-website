@@ -1,4 +1,3 @@
-// Top circle
 const topCircle = document.querySelector('.top-circle');
 const circles = document.querySelectorAll('.circle');
 
@@ -10,12 +9,16 @@ const mouse = {
 };
 
 export function attachMouseTrailListeners() {
+
+    window.addEventListener('mousedown', (e) => mouse.down = true);
+    
+    window.addEventListener('mouseup', (e) => mouse.down = false);
+
     window.addEventListener('mousemove', function (e) {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
         mouse.moving = true;
     
-        // Interacting with elements
         const interactable = e.target.closest('.interactable');
         const interacting = interactable !== null;
     
@@ -25,17 +28,11 @@ export function attachMouseTrailListeners() {
             topCircle.style.opacity = 0;
         }
     });
-    
-    window.addEventListener('mousedown', function (e) {
-        mouse.down = true;
-    });
-    
-    window.addEventListener('mouseup', function (e) {
-        mouse.down = false;
-    });
-}
 
-export function animateCircles() {
+    animateCircles();
+};
+
+function animateCircles() {
     let x = mouse.x;
     let y = mouse.y;
 
@@ -56,7 +53,7 @@ export function animateCircles() {
         }
 
         if (mouse.down) {
-            let random = Math.random();
+            const random = Math.random();
 
             if (random <= 0.25) {
                 x += Math.random() * 10;
@@ -71,7 +68,6 @@ export function animateCircles() {
                 x -= Math.random() * 10;
                 y += Math.random() * 10;
             }
-
         }
 
         circle.x = x;

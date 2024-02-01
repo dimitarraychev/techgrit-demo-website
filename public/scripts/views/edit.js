@@ -1,4 +1,4 @@
-import { updateData, getData } from "../api/data.js";
+import { getOnePost, updatePost } from "../api/posts.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
 
 let context;
@@ -49,17 +49,15 @@ const editTemplate = (data) => context.html`
 export async function editPage(ctx) {
 	context = ctx;
 
+	if (!context.userID) {
+		showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
+		return context.redirect('/posts');
+	}
+
 	const postID = context.params.id;
-	const data = await getData(context, postID);
+	const data = await getOnePost(postID);
 
-	context.onAuthStateChanged(context.auth, (user) => {
-		if (!user) {
-			showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
-			return context.redirect('/posts#all');
-		}
-	});
-
-	context.render(editTemplate(data), context.main);
+	context.render(editTemplate(data));
 }
 
 function submitForm(e) {
@@ -85,12 +83,11 @@ function submitForm(e) {
 
 	async function confirmSubmit(ev) {
 
+		await updatePost(postID, { title, category, image, description });
+
 		const modal = document.querySelector('dialog');
-
-		await updateData(context, postID, { title, category, image, description });
 		modal.close();
-		e.target.reset;
 
-		context.redirect(`posts${postID}`);
+		context.redirect(`posts/${postID}`);
 	}
 }

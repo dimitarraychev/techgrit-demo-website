@@ -1,4 +1,4 @@
-import { login } from "../api/user.js";
+import { login } from "../api/users.js";
 import { appendErrorMessage } from "../util/errorHandler.js";
 
 let context;
@@ -22,7 +22,7 @@ const loginTemplate = () => context.html`
 
 export function loginPage(ctx) {
     context = ctx;
-    context.render(loginTemplate(), context.main);
+    context.render(loginTemplate());
 }
 
 function submitForm(e) {
@@ -34,5 +34,6 @@ function submitForm(e) {
 	
 	if (email == '' || password == '') return appendErrorMessage('empty');
 
-    login(e, context, email, password);
+    login(email, password);
+	context.redirect('/posts');
 }
