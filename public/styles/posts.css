@@ -8,11 +8,28 @@
     height: 80vh;
     width: 15vw;
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 30vh;
+    grid-template-rows: 0.1fr 1fr 1fr;
+    gap: 5vh;
     margin: 1vw;
     margin-top: 0;
     overflow: hidden;
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#searchfield {
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.fa-magnifying-glass {
+    margin: 0;
+    padding: 0;
 }
 
 .posts-list {
@@ -23,9 +40,6 @@
 
 .posts-list a {
     color: black;
-}
-
-.posts-list li {
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -34,7 +48,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
-.posts-list li:hover {
+.posts-list a:hover {
     cursor: pointer;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
 }
@@ -48,6 +62,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin: auto;
+    height: 6vh;
 }
 
 #createBtn:hover {

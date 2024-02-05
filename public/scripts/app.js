@@ -1,7 +1,7 @@
 import page from "https://cdn.jsdelivr.net/npm/page@1.11.6/+esm";
 
 import { middleware } from "./middlewares/middleware.js"
-import { authentication } from "./middlewares/authentication.js"
+import { authentication } from "./middlewares/auth.js"
 import { attachMouseTrailListeners } from "./util/mouse-trail.js";
 import { showUserMenu } from "./util/ui.js";
 
@@ -21,8 +21,8 @@ page('/index.html', '/');
 page('/', homePage);
 page('/register', registerPage);
 page('/login', loginPage);
-page('/create', createPage);
 page('/posts', postsPage);
+page('/posts/create', createPage);
 page('/posts/:id', detailsPage);
 page('/posts/:id/edit', editPage);
 page('*', notFoundPage);
@@ -31,9 +31,6 @@ page.start();
 
 attachMouseTrailListeners();
 
-document.getElementById('logoutBtn').addEventListener('click', (e) => { 
-    logout();
-	page.redirect('/');
-});
+document.getElementById('logoutBtn').addEventListener('click', (e) => logout(page.redirect));
 
 document.addEventListener('click', showUserMenu);

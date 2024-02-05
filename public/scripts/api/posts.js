@@ -4,18 +4,10 @@ import { firebase } from "../config/firebase.js";
 
 const db = firebase().database;
 
-export async function writePost(title, category, image, description, ownerID, ownerName, likes) {
+export async function writePost(data) {
 
     try {
-        const docRef = await addDoc(collection(db, 'posts'), {
-            title,
-            category,
-            image,
-            description,
-            ownerID,
-            ownerName,
-            likes
-        });
+        const docRef = await addDoc(collection(db, 'posts'), data);
 
         return docRef.id;
     } catch (error) {
@@ -50,6 +42,29 @@ export async function getAllPosts(queryArr) {
     }
 }
 
+export async function searchPosts(searchString) {
+
+    const searchQuery = searchString.toLowerCase().split(' ');
+
+    const myQuery = query(
+        collection(db, 'posts'),
+        where('lowercaseTitle', 'array-contains-any', searchQuery)
+    );
+
+    try {
+        const snapshot = await getDocs(myQuery);
+        const result = [];
+
+        snapshot.forEach(doc => {
+            result.push({ id: doc.id, data: doc.data() })
+        });
+
+        return result;
+    } catch (error) {
+        showErrorModal(error.message);
+    }
+}
+
 export async function getOnePost(id) {
 
     const docRef = doc(db, "posts", id);
@@ -63,7 +78,7 @@ export async function getOnePost(id) {
 }
 
 export async function updatePost(id, data, isLike) {
-    
+
     const docRef = doc(db, 'posts', id);
 
     try {

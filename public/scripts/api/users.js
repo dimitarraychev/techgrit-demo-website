@@ -23,14 +23,15 @@ export async function login(email, password) {
 	}
 }
 
-export function logout() {
+export function logout(redirect) {
 
     showErrorModal('Logout initiated! Are you prepared for the real world? 🌐', true);
 
 	const confirmBtn = document.querySelector('#dialogConfirmBtn');
+	
 	confirmBtn.addEventListener('click', (e) => { 
-
 		signOut(auth);
 		document.querySelector('dialog').close();
+		redirect('/');
     });
 }

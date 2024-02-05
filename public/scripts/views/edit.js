@@ -67,6 +67,7 @@ function submitForm(e) {
 
 	const formData = new FormData(e.target);
 	const title = formData.get('title').trim();
+	const lowercaseTitle = formData.get('title').trim().toLowerCase().split(' ');
 	const category = formData.get('category');
 	const image = formData.get('image').trim();
 	const description = formData.get('description').trim();
@@ -83,7 +84,7 @@ function submitForm(e) {
 
 	async function confirmSubmit(ev) {
 
-		await updatePost(postID, { title, category, image, description });
+		await updatePost(postID, { title, lowercaseTitle, category, image, description });
 
 		const modal = document.querySelector('dialog');
 		modal.close();

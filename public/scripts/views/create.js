@@ -59,6 +59,7 @@ async function submitForm(e) {
 
 	const formData = new FormData(e.target);
 	const title = formData.get('title').trim();
+	const lowercaseTitle = formData.get('title').trim().toLowerCase().split(' ');
 	const category = formData.get('category');
 	const image = formData.get('image').trim();
 	const description = formData.get('description').trim();
@@ -78,7 +79,7 @@ async function submitForm(e) {
 
 	async function confirmSubmit(ev) {
 
-		const postID = await writePost(title, category, image, description, ownerID, ownerName, likes);
+		const postID = await writePost({ title, lowercaseTitle, category, image, description, ownerID, ownerName, likes });
 
 		const modal = document.querySelector('dialog');
 		modal.close();

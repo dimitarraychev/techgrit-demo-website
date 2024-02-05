@@ -3,14 +3,16 @@ import { firebase } from "../config/firebase.js";
 
 const auth = firebase().auth;
 
+const welcomeMessage = document.querySelector('.username');
+const guestBtns = document.querySelectorAll('.guest');
+const userBtns = document.querySelectorAll('.user');
+
 export async function authentication(ctx, next) {
-    const welcomeMessage = document.querySelector('.username');
-    const guestBtns = document.querySelectorAll('.guest');
-    const userBtns = document.querySelectorAll('.user');
 
     await onAuthStateChanged(auth, (user) => {
         if (user) {
-            welcomeMessage.textContent = `${auth.currentUser.displayName}`;
+            welcomeMessage.textContent = `${user.displayName}`;
+
             userBtns.forEach(btn => btn.style.display = 'block');
             guestBtns.forEach(btn => btn.style.display = 'none');
             
@@ -18,6 +20,7 @@ export async function authentication(ctx, next) {
             ctx.displayName = user.displayName;
         } else {
             welcomeMessage.textContent = 'Guest';
+
             userBtns.forEach(btn => btn.style.display = 'none');
             guestBtns.forEach(btn => btn.style.display = 'block');
         }
