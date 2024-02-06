@@ -1,4 +1,4 @@
-import { getAllPosts, searchPosts } from "../api/posts.js";
+import { getPosts } from "../api/posts.js";
 
 let context;
 
@@ -80,7 +80,13 @@ export async function postsPage(ctx) {
 	context.render(emptyTemplate(false, true, false));
 
 	const query = ctx.querystring.split('=');
-	const data = await getAllPosts(query);
+	const data = await getPosts(query);
+
+	if (query[0] === 'search') {
+		if (posts.length < 1) return context.render(emptyTemplate(false, false, true, query[1]));
+	
+		return context.render(postsTemplate(data, query[1]));
+	}
 
 	if (!data || data.length == 0) {
 		return context.render(emptyTemplate(true, false, false));
@@ -105,9 +111,5 @@ async function search(e) {
 
 	if (searchString.trim() == '') return inputFieldRef.value = '';
 
-	const posts = await searchPosts(searchString);
-
-	if (posts.length < 1) return context.render(emptyTemplate(false, false, true, searchString));
-
-	context.render(postsTemplate(posts, searchString));
+	context.redirect(`/posts?search=${searchString}`);
 }

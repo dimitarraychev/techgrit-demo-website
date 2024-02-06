@@ -15,41 +15,25 @@ export async function writePost(data) {
     }
 }
 
-export async function getAllPosts(queryArr) {
+export async function getPosts(queryArr) {
 
     let myQuery = query(
         collection(db, 'posts'),
     );
 
     if (queryArr.length > 1) {
-        myQuery = query(
-            collection(db, 'posts'),
-            where(queryArr[0], '==', queryArr[1])
-        );
+        if (queryArr[0] === 'category') {
+            myQuery = query(
+                collection(db, 'posts'),
+                where(queryArr[0], '==', queryArr[1])
+            );
+        } else if (queryArr[0] === 'search') {
+            myQuery = query(
+                collection(db, 'posts'),
+                where('lowercaseTitle', 'array-contains-any', queryArr[1].split(' '))
+            );
+        }
     }
-
-    try {
-        const snapshot = await getDocs(myQuery);
-        const result = [];
-
-        snapshot.forEach(doc => {
-            result.push({ id: doc.id, data: doc.data() })
-        });
-
-        return result;
-    } catch (error) {
-        showErrorModal(error.message);
-    }
-}
-
-export async function searchPosts(searchString) {
-
-    const searchQuery = searchString.toLowerCase().split(' ');
-
-    const myQuery = query(
-        collection(db, 'posts'),
-        where('lowercaseTitle', 'array-contains-any', searchQuery)
-    );
 
     try {
         const snapshot = await getDocs(myQuery);

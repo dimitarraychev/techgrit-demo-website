@@ -30,7 +30,7 @@ header {
     font-size: 32px;
     letter-spacing: -2px;
     color: black;
-    margin-left: 60px;
+    margin-left: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
