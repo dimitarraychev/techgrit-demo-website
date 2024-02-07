@@ -52,6 +52,29 @@ export async function getPosts(queryArr) {
     }
 }
 
+export async function getPostsByUserID(userID) {
+
+    const myQuery = query(
+        collection(db, 'posts'),
+        where('ownerID', '==', userID),
+        orderBy('timestamp', 'desc')
+    );
+
+    try {
+        const snapshot = await getDocs(myQuery);
+        const result = [];
+
+        snapshot.forEach(doc => {
+            result.push({ id: doc.id, data: doc.data() })
+        });
+
+        return result;
+    } catch (error) {
+        showErrorModal(error.message);
+        console.log(error);
+    }
+}
+
 export async function getOnePost(id) {
 
     const postRef = doc(db, "posts", id);

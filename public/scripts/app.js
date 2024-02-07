@@ -14,6 +14,7 @@ import { detailsPage } from "./views/details.js";
 import { postsPage } from "./views/posts.js";
 import { editPage } from "./views/edit.js";
 import { notFoundPage } from "./views/404.js";
+import { myPostsPage } from "./views/myPosts.js";
 
 page(middleware);
 page(authentication);
@@ -25,6 +26,7 @@ page('/posts', postsPage);
 page('/posts/create', createPage);
 page('/posts/:id', detailsPage);
 page('/posts/:id/edit', editPage);
+page('/myposts', myPostsPage);
 page('*', notFoundPage);
 
 page.start();

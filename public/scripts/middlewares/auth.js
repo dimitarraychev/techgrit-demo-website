@@ -24,7 +24,7 @@ export async function authentication(ctx, next) {
             userBtns.forEach(btn => btn.style.display = 'none');
             guestBtns.forEach(btn => btn.style.display = 'block');
         }
-    });
 
-    next();
+        next();
+    });
 }
