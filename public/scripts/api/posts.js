@@ -1,4 +1,4 @@
-import { getDocs, getDoc, addDoc, updateDoc, deleteDoc, query, collection, doc, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getDocs, getDoc, addDoc, updateDoc, deleteDoc, query, collection, doc, where, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
 import { firebase } from "../config/firebase.js";
 
@@ -19,18 +19,21 @@ export async function getPosts(queryArr) {
 
     let myQuery = query(
         collection(db, 'posts'),
+        orderBy('timestamp', 'desc')
     );
 
     if (queryArr.length > 1) {
         if (queryArr[0] === 'category') {
             myQuery = query(
                 collection(db, 'posts'),
-                where(queryArr[0], '==', queryArr[1])
+                where(queryArr[0], '==', queryArr[1]),
+                orderBy('timestamp', 'desc')
             );
         } else if (queryArr[0] === 'search') {
             myQuery = query(
                 collection(db, 'posts'),
-                where('lowercaseTitle', 'array-contains-any', queryArr[1].split(' '))
+                where('lowercaseTitle', 'array-contains-any', queryArr[1].split(' ')),
+                orderBy('timestamp', 'desc')
             );
         }
     }
@@ -51,11 +54,22 @@ export async function getPosts(queryArr) {
 
 export async function getOnePost(id) {
 
-    const docRef = doc(db, "posts", id);
-    const docSnap = await getDoc(docRef);
+    const postRef = doc(db, "posts", id);
+    const postSnap = await getDoc(postRef);
 
-    if (docSnap.exists()) {
-        return docSnap.data();
+    const postCommentsRef = query(
+        collection(postRef, "comments"),
+        orderBy('timestamp', 'desc')
+    );
+    const commentsSnap = await getDocs(postCommentsRef);
+    const comments = [];
+
+    commentsSnap.forEach(doc => {
+        comments.push({ id: doc.id, data: doc.data() })
+    });
+
+    if (postSnap.exists()) {
+        return { post:postSnap.data(), comments };
     } else {
         showErrorModal('Oops, post was not found, sorry!');
     }

@@ -55,9 +55,9 @@ export async function editPage(ctx) {
 	}
 
 	const postID = context.params.id;
-	const data = await getOnePost(postID);
+	const { post, comments } = await getOnePost(postID);
 
-	context.render(editTemplate(data));
+	context.render(editTemplate(post));
 }
 
 function submitForm(e) {

@@ -17,6 +17,103 @@
     justify-items: center;
 }
 
+#comments-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    padding-top: 1em;
+    gap: 1em;
+}
+
+.comment {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.comment-text {
+    padding: 0 1em;
+}
+
+.comment-username-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.comment-username-left {
+    display: flex;
+    color: gray;
+    gap: 5px;
+}
+
+.comment-username-right {
+    font-size: 10px;
+    color: gray;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.delete-comment-btn {
+    width: 5vw;
+    height: 3vh;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 10px;
+    overflow: hidden;
+}
+
+.delete-comment-btn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+
+.add-comment-text {
+    font-size: 1em;
+    height: 4em;
+}
+
+.add-comment-btn {
+    width: 5vw;
+    height: 4vh;
+    position: relative;
+    border-radius: 5px;
+    font-size: 10px;
+    margin: auto;
+    transition: 0.3s ease;
+    background-color: black;
+    color: #fff;
+}
+
+.add-comment-btn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+#noComments {
+    margin: auto;
+}
+
 .details-info {
     display: grid;
     padding-left: 3vw;
@@ -24,10 +121,18 @@
     width: 40vw;
 }
 
-.details-category {
+.details-category-time {
     color: gray;
     align-self: end;
     font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+}
+
+.post-time {
+    font-size: 12px;
 }
 
 .details-title {
@@ -89,7 +194,6 @@
 }
 
 .details-owner button {
-    margin-top: 1rem;
     width: 5vw;
     height: 3vh;
     background-color: black;

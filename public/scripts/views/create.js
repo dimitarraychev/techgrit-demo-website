@@ -66,6 +66,7 @@ async function submitForm(e) {
 	const ownerID = context.userID;
 	const ownerName = context.displayName;
 	const likes = [];
+    const timestamp = new Date().toISOString();
 
 	if (title == '' || image == '' ||
 		category == null || description == '') return appendErrorMessage('empty');
@@ -79,7 +80,7 @@ async function submitForm(e) {
 
 	async function confirmSubmit(ev) {
 
-		const postID = await writePost({ title, lowercaseTitle, category, image, description, ownerID, ownerName, likes });
+		const postID = await writePost({ title, lowercaseTitle, category, image, description, ownerID, ownerName, likes, timestamp });
 
 		const modal = document.querySelector('dialog');
 		modal.close();
