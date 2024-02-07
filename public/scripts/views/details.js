@@ -111,6 +111,7 @@ async function delPost(e) {
         modal.close();
 
         context.redirect('/posts');
+        confirmBtn.removeEventListener('click', confirmSubmit);
     }
 }
 
@@ -154,5 +155,6 @@ async function delComment(e) {
         modal.close();
 
         context.redirect(`/posts/${postID}`);
+        confirmBtn.removeEventListener('click', confirmSubmit);
     }
 }

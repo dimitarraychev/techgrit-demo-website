@@ -42,9 +42,10 @@ function logoutUser(e) {
 
     const confirmBtn = document.querySelector('#dialogConfirmBtn');
 
-    confirmBtn.addEventListener('click', async (e) => {
+    confirmBtn.addEventListener('click', async function confirmation(e) {
         await logout();
         document.querySelector('dialog').close();
         context.redirect('/');
+        confirmBtn.removeEventListener('click', confirmation);
     });
 }

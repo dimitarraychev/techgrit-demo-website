@@ -90,5 +90,7 @@ function submitForm(e) {
 		modal.close();
 
 		context.redirect(`posts/${postID}`);
+        confirmBtn.removeEventListener('click', confirmSubmit);
+
 	}
 }
