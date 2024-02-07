@@ -49,7 +49,7 @@ export function registerPage(ctx) {
 	context.render(registerTemplate());
 }
 
-function submitForm(e) {
+async function submitForm(e) {
 	e.preventDefault();
 
 	const formData = new FormData(e.target);
@@ -62,6 +62,6 @@ function submitForm(e) {
 	if (username.length < 3 || username.length > 20) return appendErrorMessage('length');
 	if (rePass != password) return appendErrorMessage('match');
 
-	register(username, email, password);
+	await register(username, email, password);
 	context.redirect('/posts');
 }

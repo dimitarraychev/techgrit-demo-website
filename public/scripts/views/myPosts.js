@@ -34,6 +34,11 @@ const emptyTemplate = (isEmpty, isLoading) => context.html`
 export async function myPostsPage(ctx) {
 	context = ctx;
 
+    if (!context.userID) {
+		showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
+		return context.redirect('/login');
+	}
+
 	context.render(emptyTemplate(false, true));
 
     const userID = context.userID;

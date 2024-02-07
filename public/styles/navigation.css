@@ -65,6 +65,7 @@ header {
     z-index: 2;
     position: fixed;
     display: none;
+    flex-direction: column;
     width: 7em;
     right: 1vw;
     top: 9vh;

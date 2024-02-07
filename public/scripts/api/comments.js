@@ -1,4 +1,4 @@
-import { getDocs, getDoc, addDoc, updateDoc, deleteDoc, query, collection, doc, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { addDoc, deleteDoc, collection, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { showErrorModal } from "../util/errorHandler.js";
 import { firebase } from "../config/firebase.js";
 

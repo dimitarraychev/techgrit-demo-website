@@ -54,7 +54,7 @@ export function createPage(ctx) {
 	context.render(createTemplate());
 }
 
-async function submitForm(e) {
+function submitForm(e) {
 	e.preventDefault();
 
 	const formData = new FormData(e.target);

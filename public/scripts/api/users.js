@@ -23,15 +23,11 @@ export async function login(email, password) {
 	}
 }
 
-export function logout(redirect) {
+export async function logout() {
 
-    showErrorModal('Logout initiated! Are you prepared for the real world? 🌐', true);
-
-	const confirmBtn = document.querySelector('#dialogConfirmBtn');
-	
-	confirmBtn.addEventListener('click', (e) => { 
-		signOut(auth);
-		document.querySelector('dialog').close();
-		redirect('/');
-    });
+	try {
+		await signOut(auth);	
+	} catch (error) {
+		showErrorModal('A wild error occured! 🏞️')
+	}
 }

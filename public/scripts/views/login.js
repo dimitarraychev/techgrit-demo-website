@@ -25,7 +25,7 @@ export function loginPage(ctx) {
     context.render(loginTemplate());
 }
 
-function submitForm(e) {
+async function submitForm(e) {
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -34,6 +34,6 @@ function submitForm(e) {
 	
 	if (email == '' || password == '') return appendErrorMessage('empty');
 
-    login(email, password);
+    await login(email, password);
 	context.redirect('/posts');
 }

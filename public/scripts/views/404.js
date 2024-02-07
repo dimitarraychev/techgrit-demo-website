@@ -1,6 +1,4 @@
-let context;
-
-const notFoundTemplate = () => context.html`
+const notFoundTemplate = (ctx) => ctx.html`
         <section id="fourohfour">
             <div id="fourohfourContainer">
                 <h1 id="fourohfourNum">404</h1>
@@ -11,6 +9,5 @@ const notFoundTemplate = () => context.html`
 `;
 
 export function notFoundPage(ctx) {
-    context = ctx;
-    context.render(notFoundTemplate());
+    context.render(notFoundTemplate(ctx));
 }

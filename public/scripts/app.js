@@ -8,16 +8,17 @@ import { showUserMenu } from "./util/ui.js";
 import { homePage } from "./views/home.js";
 import { loginPage } from "./views/login.js";
 import { registerPage } from "./views/register.js";
-import { logout } from "./api/users.js";
 import { createPage } from "./views/create.js";
 import { detailsPage } from "./views/details.js";
 import { postsPage } from "./views/posts.js";
 import { editPage } from "./views/edit.js";
 import { notFoundPage } from "./views/404.js";
 import { myPostsPage } from "./views/myPosts.js";
+import { nav } from "./middlewares/nav.js";
 
 page(middleware);
 page(authentication);
+page(nav);
 page('/index.html', '/');
 page('/', homePage);
 page('/register', registerPage);
@@ -32,7 +33,5 @@ page('*', notFoundPage);
 page.start();
 
 attachMouseTrailListeners();
-
-document.getElementById('logoutBtn').addEventListener('click', (e) => logout(page.redirect));
 
 document.addEventListener('click', showUserMenu);
