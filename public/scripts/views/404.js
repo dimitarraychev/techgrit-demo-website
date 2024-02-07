@@ -9,5 +9,5 @@ const notFoundTemplate = (ctx) => ctx.html`
 `;
 
 export function notFoundPage(ctx) {
-    context.render(notFoundTemplate(ctx));
+    ctx.render(notFoundTemplate(ctx));
 }
