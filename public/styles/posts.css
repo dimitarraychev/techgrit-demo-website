@@ -1,6 +1,7 @@
 #posts {
     padding-top: 6rem;
-    min-height: 100vh;
+    min-height: 92vh;
+    user-select: none;
 }
 
 .posts-nav {
@@ -8,11 +9,12 @@
     height: 80vh;
     width: 15vw;
     display: grid;
-    grid-template-rows: 0.1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr;
     gap: 5vh;
     margin: 1vw;
     margin-top: 0;
     padding-right: 1vw;
+    padding-bottom: 20em;
     overflow: hidden;
 }
 

@@ -64,7 +64,6 @@ const emptyTemplate = (isEmpty, isLoading, isNoResult, searchString) => context.
 				<a href="/posts?category=artificial-intelligence" class="artificial-intelligence interactable">Artificial Intelligence</a>
 				<a href="/posts?category=other" class="other interactable">Other</a>
 			</ul>
-			<a href="/posts/create" id="createBtn" class="interactable">Create New Post</a>
 		</div>
 		<div class="posts-content">
 			${isEmpty? context.html`<h1 class='no-posts'>No posts yet. Be the first to share the news!</h1>` : null}

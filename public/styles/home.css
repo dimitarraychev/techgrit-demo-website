@@ -17,7 +17,7 @@ body {
 }
 
 main {
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 #home {
@@ -29,10 +29,11 @@ main {
     justify-items: center;
     align-items: center;
     width: 90%;
-    min-height: 100vh;
+    min-height: 90vh;
     margin: auto;
     row-gap: 5vh;
     padding-bottom: 5vh;
+    user-select: none;
 }
 
 .home-msg {
@@ -159,7 +160,7 @@ dialog button:hover {
 footer {
     display: flex;
     justify-content: space-around;
-    padding: 2em 1em 1em 1em;
+    padding: 1em;
     width: 30%;
     margin: auto;
 }

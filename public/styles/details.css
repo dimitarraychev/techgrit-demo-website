@@ -1,6 +1,7 @@
 #details {
     width: 100%;
     padding-top: 6rem;
+    min-height: 92vh;
 }
 
 #details-container {
