@@ -49,12 +49,13 @@ const editTemplate = (data) => context.html`
 export async function editPage(ctx) {
 	context = ctx;
 
+	const postID = context.params.id;
+
 	if (!context.userID) {
 		showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
-		return context.redirect('/posts');
+		return context.redirect(`/posts/${postID}`);
 	}
 
-	const postID = context.params.id;
 	const { post, comments } = await getOnePost(postID);
 
 	context.render(editTemplate(post));

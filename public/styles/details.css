@@ -17,6 +17,106 @@
     justify-items: center;
 }
 
+.details-info {
+    display: grid;
+    padding-left: 3vw;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+    width: 40vw;
+}
+
+.details-category-time {
+    color: gray;
+    align-self: end;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+}
+
+.post-time {
+    font-size: 12px;
+}
+
+.details-title {
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.details-like {
+    display: flex;
+    justify-content: space-between;
+}
+
+.like {
+    height: 10vh;
+    width: 10vh;
+}
+
+#likeBtn {
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto;
+    font-size: 16px;
+}
+
+#likeBtn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.details-img {
+    padding: 20px;
+    width: 35vw;
+    height: 40vh;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.details-description {
+    margin: auto;
+    width: 70%;
+    grid-column: span 2;
+    line-height: 1.4;
+    letter-spacing: 0.15px;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+    padding: 1em 0 2em 0;
+}
+
+.details-description::first-letter {
+    initial-letter: 2;
+    padding-right: 0.2em;
+    font-weight: bold;
+}
+
+.details-owner button {
+    width: 5vw;
+    height: 3vh;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto;
+    margin-top: 1rem;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.details-owner button:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
 #comments-container{
     position: relative;
     display: flex;
@@ -112,104 +212,4 @@
 
 #noComments {
     margin: auto;
-}
-
-.details-info {
-    display: grid;
-    padding-left: 3vw;
-    grid-template-rows: 1fr 1fr 2fr;
-    width: 40vw;
-}
-
-.details-category-time {
-    color: gray;
-    align-self: end;
-    font-style: italic;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    justify-items: center;
-}
-
-.post-time {
-    font-size: 12px;
-}
-
-.details-title {
-    font-size: 32px;
-    letter-spacing: 1px;
-}
-
-.details-like {
-    display: flex;
-    justify-content: space-between;
-}
-
-.like {
-    height: 10vh;
-    width: 10vh;
-}
-
-#likeBtn {
-    padding: 10px 20px;
-    background-color: black;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: auto;
-    font-size: 16px;
-}
-
-#likeBtn:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-}
-
-.details-img {
-    padding: 20px;
-    width: 35vw;
-    height: 40vh;
-    border-radius: 30px;
-    object-fit: cover;
-}
-
-.details-description {
-    margin: auto;
-    width: 70%;
-    grid-column: span 2;
-    line-height: 1.4;
-    letter-spacing: 0.1px;
-    overflow-wrap: break-word;
-    white-space: pre-line;
-    padding-bottom: 3em;
-}
-
-.details-description::first-letter {
-    initial-letter: 2;
-    padding-right: 0.2em;
-    font-weight: bold;
-}
-
-.details-owner button {
-    width: 5vw;
-    height: 3vh;
-    background-color: black;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: auto;
-    margin-top: 1rem;
-    font-size: 12px;
-    overflow: hidden;
-}
-
-.details-owner button:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
 }

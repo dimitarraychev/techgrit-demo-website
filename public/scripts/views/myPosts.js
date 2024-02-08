@@ -1,4 +1,5 @@
 import { getPostsByUserID } from "../api/posts.js";
+import { showErrorModal } from "../util/errorHandler.js";
 
 let context;
 

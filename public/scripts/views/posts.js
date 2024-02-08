@@ -25,7 +25,6 @@ const postsTemplate = (data, searchString) => context.html`
 					<a href="/posts?category=artificial-intelligence" class="artificial-intelligence interactable">Artificial Intelligence</a>
 					<a href="/posts?category=other" class="other interactable">Other</a>
 				</ul>
-				<a href="/posts/create" id="createBtn" class="interactable">Create New Post</a>
 			</div>
 			<div class="posts-content">
 				${data.map(el => context.html`

@@ -48,7 +48,7 @@ export function createPage(ctx) {
 	
 	if (!context.userID) {
 		showErrorModal('Oops! Login required to proceed with this action. 🔒💻');
-		return context.redirect('/posts');
+		return context.redirect('/login');
 	}
 
 	context.render(createTemplate());

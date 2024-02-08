@@ -4,7 +4,7 @@ nav {
     top: 0;
     z-index: 2;
     width: 100%;
-    height: 5vh;
+    height: 4vh;
     display: flex;
     border-bottom: 2px solid black;
     align-items: center;
@@ -13,7 +13,7 @@ nav {
     background: white;
     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
     font-size: 18px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 header {
@@ -27,10 +27,9 @@ header {
 
 .logo-container {
     font-family: 'Orbitron', sans-serif;
-    font-size: 32px;
+    font-size: 36px;
     letter-spacing: -2px;
     color: black;
-    margin-left: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,6 +47,29 @@ header {
     gap: 0.2em;
 }
 
+#createBtn {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+#createBtn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+#postsBtn {
+    color: black;
+    margin: 1em;
+    font-weight: 600;
+}
+
 .username {
     color: black;
     font-weight: 600;
@@ -55,7 +77,7 @@ header {
 }
 
 .fa-user-astronaut {
-    font-size: 32px;
+    font-size: 30px;
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -66,7 +88,7 @@ header {
     position: fixed;
     display: none;
     flex-direction: column;
-    width: 7em;
+    width: 6em;
     right: 1vw;
     top: 9vh;
     border-radius: 5px;
@@ -77,7 +99,7 @@ header {
     text-decoration: none;
     color: black;
     font-weight: 600;
-    padding: 1vh;
+    padding: 5px;
     font-size: 18px;
     width: 100%;
     border-radius: 2px;
@@ -88,10 +110,4 @@ header {
 
 .menu-items a:hover {
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
-}
-
-#postsBtn {
-    color: black;
-    margin-right: 2vw;
-    font-weight: 600;
 }

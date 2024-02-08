@@ -11,6 +11,7 @@ const navTemplate = (ctx) => html`
             <a href="/" class="logo interactable">TechGrit</a>
         </div>
         <div class="user-menu">
+			<a href="/posts/create" id="createBtn" class="interactable">Create</a>
             <a href="/posts" id="postsBtn" class="interactable">Posts</a>
             <p class="username open-menu interactable">${ctx.displayName || 'Guest'}</p>
             <i class="fa-solid fa-user-astronaut open-menu interactable"></i>

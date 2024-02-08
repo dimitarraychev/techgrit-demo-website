@@ -54,24 +54,6 @@
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
-#createBtn {
-    background-color: black;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: auto;
-    height: 6vh;
-}
-
-#createBtn:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-}
-
 .posts-content {
     position: relative;
     left: 16vw;
