@@ -5,6 +5,7 @@ export function appendErrorMessage(error) {
 	if (error == 'empty') return errorField.textContent = 'Uh-oh! All fields are required.';
 	if (error == 'match') return errorField.textContent = 'Oops! Passwords should match.';
 	if (error == 'length') return errorField.textContent = 'Sorry, username should be between 3 and 20 characters.';
+	if (error == 'profane') return errorField.textContent = 'Sorry, username cannot contain profanity.';
 	if (error == 'title') return errorField.textContent = 'Oops, title should be between 5 and 100 characters.';
 	if (error == 'description') return errorField.textContent = 'Oops, description should be between 50 and 3000 characters.';
 	if (error.includes('invalid-email')) return errorField.textContent = 'Sorry, email is invalid.';

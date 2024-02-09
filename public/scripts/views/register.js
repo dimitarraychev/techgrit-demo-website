@@ -1,6 +1,9 @@
 import { register } from "../api/users.js";
 import { analyticsEvent } from "../config/firebase.js";
 import { appendErrorMessage } from "../util/errorHandler.js";
+import badWords from 'https://cdn.jsdelivr.net/npm/bad-words@3.0.4/+esm';
+
+const filter = new badWords();
 
 let context;
 
@@ -61,6 +64,7 @@ async function submitForm(e) {
 
 	if (email == '' || password == '') return appendErrorMessage('empty');
 	if (username.length < 3 || username.length > 20) return appendErrorMessage('length');
+	if (filter.isProfane(username)) return appendErrorMessage('profane');
 	if (rePass != password) return appendErrorMessage('match');
 
 	await register(username, email, password);
