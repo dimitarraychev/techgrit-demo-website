@@ -1,8 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
-import { firebase } from "../config/firebase.js";
-
-const auth = firebase().auth;
+import { auth } from "../config/firebase.js";
 
 export async function register(username, email, password) {
 

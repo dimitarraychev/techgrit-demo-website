@@ -58,7 +58,7 @@ const detailsTemplate = (data, isOwner, isLikedByUser, likesNum, comments) => co
                         <p class="comment-username">${context.displayName || 'Guest'}</p>
                     </div>
                 </div>
-                <textarea type="comment" name="comment" class="add-comment-text" placeholder="Comment..." class="interactable"></textarea>
+                <textarea type="comment" name="comment" class="add-comment-text" placeholder="Add a comment..." class="interactable"></textarea>
                 <button type="submit" class="add-comment-btn interactable" @click=${addComment}>Comment</button>
             </div>
         </div>

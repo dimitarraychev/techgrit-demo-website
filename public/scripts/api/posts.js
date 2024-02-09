@@ -1,8 +1,6 @@
 import { getDocs, getDoc, addDoc, updateDoc, deleteDoc, query, collection, doc, where, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
-import { firebase } from "../config/firebase.js";
-
-const db = firebase().database;
+import { db } from "../config/firebase.js";
 
 export async function writePost(data) {
 

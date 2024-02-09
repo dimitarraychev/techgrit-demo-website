@@ -1,4 +1,5 @@
 import { register } from "../api/users.js";
+import { analyticsEvent } from "../config/firebase.js";
 import { appendErrorMessage } from "../util/errorHandler.js";
 
 let context;
@@ -63,5 +64,6 @@ async function submitForm(e) {
 	if (rePass != password) return appendErrorMessage('match');
 
 	await register(username, email, password);
+	analyticsEvent('register');
 	context.redirect('/posts');
 }

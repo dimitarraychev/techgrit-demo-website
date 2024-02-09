@@ -1,5 +1,8 @@
 import { getOnePost, updatePost } from "../api/posts.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
+import badWords from 'https://cdn.jsdelivr.net/npm/bad-words@3.0.4/+esm';
+
+const filter = new badWords();
 
 let context;
 
@@ -67,11 +70,11 @@ function submitForm(e) {
 	const postID = context.params.id;
 
 	const formData = new FormData(e.target);
-	const title = formData.get('title').trim();
+	const title = filter.clean(formData.get('title').trim());
 	const lowercaseTitle = formData.get('title').trim().toLowerCase().split(' ');
 	const category = formData.get('category');
 	const image = formData.get('image').trim();
-	const description = formData.get('description').trim();
+	const description = filter.clean(formData.get('description').trim());
 
 	if (title == '' || image == '' ||
 		category == null || description == '') return appendErrorMessage('empty');

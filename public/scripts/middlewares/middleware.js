@@ -13,6 +13,7 @@ export function middleware(ctx, next) {
     next();
 }
 
-function renderer(view) {
-    render(view, main);
+function renderer(view, container) {
+    if (!container) container = main;
+    render(view, container);
 }

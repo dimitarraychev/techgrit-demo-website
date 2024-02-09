@@ -19,11 +19,11 @@ const postsTemplate = (data, searchString) => context.html`
 					<i class="fa-solid fa-magnifying-glass interactable" @click=${search}></i>
 				</div>	
 				<ul class="posts-list">
-					<a href="/posts" class="all interactable">All Posts</a>
-					<a href="/posts?category=blockchain" class="blockchain interactable">Blockchain</a>
-					<a href="/posts?category=development" class="development interactable">Development</a>
-					<a href="/posts?category=artificial-intelligence" class="artificial-intelligence interactable">Artificial Intelligence</a>
-					<a href="/posts?category=other" class="other interactable">Other</a>
+					<a href="/posts" class="all interactable">🔥Latest</a>
+					<a href="/posts?category=blockchain" class="blockchain interactable">🔗Blockchain</a>
+					<a href="/posts?category=development" class="development interactable">💻Development</a>
+					<a href="/posts?category=artificial-intelligence" class="artificial-intelligence interactable">🤖Artificial Intelligence</a>
+					<a href="/posts?category=other" class="other interactable">🌐Other</a>
 				</ul>
 			</div>
 			<div class="posts-content">
@@ -58,17 +58,17 @@ const emptyTemplate = (isEmpty, isLoading, isNoResult, searchString) => context.
 				<i class="fa-solid fa-magnifying-glass interactable" @click=${search}></i>
 			</div>	
 			<ul class="posts-list">
-				<a href="/posts" class="all interactable">All Posts</a>
-				<a href="/posts?category=blockchain" class="blockchain interactable">Blockchain</a>
-				<a href="/posts?category=development" class="development interactable">Development</a>
-				<a href="/posts?category=artificial-intelligence" class="artificial-intelligence interactable">Artificial Intelligence</a>
-				<a href="/posts?category=other" class="other interactable">Other</a>
+				<a href="/posts" class="all interactable">🔥Latest</a>
+				<a href="/posts?category=blockchain" class="blockchain interactable">🔗Blockchain</a>
+				<a href="/posts?category=development" class="development interactable">💻Development</a>
+				<a href="/posts?category=artificial-intelligence" class="artificial-intelligence interactable">🤖Artificial Intelligence</a>
+				<a href="/posts?category=other" class="other interactable">🌐Other</a>
 			</ul>
 		</div>
 		<div class="posts-content">
-			${isEmpty? context.html`<h1 class='no-posts'>No posts yet. Be the first to share the news!</h1>` : null}
-			${isLoading? context.html`<h1 class='no-posts'>Loading...</h1>` : null}
-			${isNoResult? context.html`<h1 class='no-posts'>Sorry, no match found.</h1>` : null}
+			${isEmpty ? context.html`<h1 class='no-posts'>No posts yet. Be the first to share the news!</h1>` : null}
+			${isLoading ? context.html`<h1 class='no-posts'>Loading...</h1>` : null}
+			${isNoResult ? context.html`<h1 class='no-posts'>Sorry, no match found.</h1>` : null}
 		</div>
 	</div>
     </section>
@@ -83,11 +83,11 @@ export async function postsPage(ctx) {
 	const data = await getPosts(query);
 
 	if (query[0] === 'search') {
-		
+
 		if (posts.length < 1) {
 			return context.render(emptyTemplate(false, false, true, query[1]));
-		} 
-	
+		}
+
 		return context.render(postsTemplate(data, query[1]));
 	}
 

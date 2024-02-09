@@ -1,8 +1,6 @@
 import { addDoc, deleteDoc, collection, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { showErrorModal } from "../util/errorHandler.js";
-import { firebase } from "../config/firebase.js";
-
-const db = firebase().database;
+import { db } from "../config/firebase.js";
 
 export async function writeComment(commentObj, postID) {
 

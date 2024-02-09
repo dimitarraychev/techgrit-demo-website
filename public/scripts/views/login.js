@@ -1,4 +1,5 @@
 import { login } from "../api/users.js";
+import { analyticsEvent } from "../config/firebase.js";
 import { appendErrorMessage } from "../util/errorHandler.js";
 
 let context;
@@ -35,5 +36,6 @@ async function submitForm(e) {
 	if (email == '' || password == '') return appendErrorMessage('empty');
 
     await login(email, password);
+    analyticsEvent('login');
 	context.redirect('/posts');
 }

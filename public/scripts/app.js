@@ -15,10 +15,12 @@ import { editPage } from "./views/edit.js";
 import { notFoundPage } from "./views/404.js";
 import { myPostsPage } from "./views/myPosts.js";
 import { nav } from "./middlewares/nav.js";
+import { cookiesConsent } from "./middlewares/cookiesConsent.js";
 
 page(middleware);
 page(authentication);
 page(nav);
+page(cookiesConsent);
 page('/index.html', '/');
 page('/', homePage);
 page('/register', registerPage);
