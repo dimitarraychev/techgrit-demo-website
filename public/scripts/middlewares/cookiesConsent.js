@@ -1,7 +1,7 @@
 const consentTemp = (ctx) => ctx.html`
     <div id="cookie-popup" style="display: flex;">
         <p id="cookie-msg">This website uses cookies to ensure you get the best experience.
-            By using our website, you agree to our use of cookies.</p>
+            By using our website, you agree to our use of cookies. 🍪</p>
         <button id="cookie-accept" @click=${consent}>Got it!</button>
     </div>
 `;
