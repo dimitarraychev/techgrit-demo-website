@@ -61,11 +61,11 @@ function submitForm(e) {
 	e.preventDefault();
 
 	const formData = new FormData(e.target);
-	const title = filter.clean(formData.get('title').trim());
+	let title = formData.get('title').trim();
 	const lowercaseTitle = formData.get('title').trim().toLowerCase().split(' ');
 	const category = formData.get('category');
 	const image = formData.get('image').trim();
-	const description = filter.clean(formData.get('description').trim());
+	let description = formData.get('description').trim();
 	const ownerID = context.userID;
 	const ownerName = context.displayName;
 	const likes = [];
@@ -83,6 +83,9 @@ function submitForm(e) {
 
 	async function confirmSubmit(ev) {
 
+		title = filter.clean(title);
+		description = filter.clean(description);
+		
 		const postID = await writePost({ title, lowercaseTitle, category, image, description, ownerID, ownerName, likes, timestamp });
 
 		const modal = document.querySelector('dialog');

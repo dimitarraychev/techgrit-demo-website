@@ -67,7 +67,11 @@ async function submitForm(e) {
 	if (filter.isProfane(username)) return appendErrorMessage('profane');
 	if (rePass != password) return appendErrorMessage('match');
 
-	await register(username, email, password);
-	analyticsEvent('register');
-	context.redirect('/posts');
+	try {
+		await register(username, email, password);
+		analyticsEvent('register');
+		context.redirect('/posts');
+	} catch (error) {
+		appendErrorMessage(error.message);
+	}
 }

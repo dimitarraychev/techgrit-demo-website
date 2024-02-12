@@ -1,6 +1,9 @@
 import { deleteComment, writeComment } from "../api/comments.js";
 import { getOnePost, deletePost, updatePost } from "../api/posts.js";
 import { showErrorModal } from "../util/errorHandler.js";
+import badWords from 'https://cdn.jsdelivr.net/npm/bad-words@3.0.4/+esm';
+
+const filter = new badWords();
 
 let context;
 
@@ -126,11 +129,13 @@ async function addComment(e) {
 
     const username = context.displayName;
     const userID = context.userID;
-    const comment = commentRef.value.trim();
+    let comment = commentRef.value.trim();
     const timestamp = new Date().toISOString();
 
     if (comment == '' ) return;
     if (comment.length < 5 || comment.length > 300) return showErrorModal('Sorry, comment should be between 5 and 300 charaters!');
+
+    comment = filter.clean(comment);
 
     await writeComment({ username, userID, comment, timestamp }, postID);
     

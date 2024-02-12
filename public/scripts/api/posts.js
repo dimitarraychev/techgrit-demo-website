@@ -76,12 +76,13 @@ export async function getPostsByUserID(userID) {
 export async function getOnePost(id) {
 
     const postRef = doc(db, "posts", id);
-    const postSnap = await getDoc(postRef);
 
     const postCommentsRef = query(
         collection(postRef, "comments"),
         orderBy('timestamp', 'desc')
     );
+    
+    const postSnap = await getDoc(postRef);
     const commentsSnap = await getDocs(postCommentsRef);
     const comments = [];
 

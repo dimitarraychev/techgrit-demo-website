@@ -35,7 +35,11 @@ async function submitForm(e) {
 	
 	if (email == '' || password == '') return appendErrorMessage('empty');
 
-    await login(email, password);
-    analyticsEvent('login');
-	context.redirect('/posts');
+    try {
+        await login(email, password);
+        analyticsEvent('login');
+	    context.redirect('/posts');
+    } catch (error) {
+        appendErrorMessage(error.message);
+    }
 }

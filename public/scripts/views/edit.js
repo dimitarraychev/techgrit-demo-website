@@ -1,5 +1,6 @@
 import { getOnePost, updatePost } from "../api/posts.js";
 import { appendErrorMessage, showErrorModal } from "../util/errorHandler.js";
+import { detailsPage } from "./details.js";
 import badWords from 'https://cdn.jsdelivr.net/npm/bad-words@3.0.4/+esm';
 
 const filter = new badWords();
@@ -70,11 +71,11 @@ function submitForm(e) {
 	const postID = context.params.id;
 
 	const formData = new FormData(e.target);
-	const title = filter.clean(formData.get('title').trim());
+	let title = formData.get('title').trim();
 	const lowercaseTitle = formData.get('title').trim().toLowerCase().split(' ');
 	const category = formData.get('category');
 	const image = formData.get('image').trim();
-	const description = filter.clean(formData.get('description').trim());
+	let description = formData.get('description').trim();
 
 	if (title == '' || image == '' ||
 		category == null || description == '') return appendErrorMessage('empty');
@@ -88,13 +89,15 @@ function submitForm(e) {
 
 	async function confirmSubmit(ev) {
 
+		title = filter.clean(title);
+		description = filter.clean(description);
+
 		await updatePost(postID, { title, lowercaseTitle, category, image, description });
 
 		const modal = document.querySelector('dialog');
 		modal.close();
 
-		context.redirect(`posts/${postID}`);
+		detailsPage(context);
         confirmBtn.removeEventListener('click', confirmSubmit);
-
 	}
 }

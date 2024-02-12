@@ -41,11 +41,17 @@ function logoutUser(e) {
     showErrorModal('Logout initiated! Are you prepared for the real world? 🌐', true);
 
     const confirmBtn = document.querySelector('#dialogConfirmBtn');
+    confirmBtn.addEventListener('click', confirmation);
 
-    confirmBtn.addEventListener('click', async function confirmation(e) {
-        await logout();
-        document.querySelector('dialog').close();
-        context.redirect('/');
-        confirmBtn.removeEventListener('click', confirmation);
-    });
+    async function confirmation(e) {
+
+        try {
+            await logout();
+            document.querySelector('dialog').close();
+            context.redirect('/');
+            confirmBtn.removeEventListener('click', confirmation);
+        } catch (error) {
+            showErrorModal('A wild error occured! 🏞️')
+        }
+    }
 }
